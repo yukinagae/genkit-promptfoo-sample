@@ -13,7 +13,7 @@
     "check": "biome check ./src",
     "fix": "biome check --write ./src",
     "genkit": "genkit start -o",
-    "kill": "lsof -i:3000,3100,3400,4000,4001,4400,5001,5050,8080,8085,9099,9199 -t | xargs kill"
+    "kill": "lsof -i:3100,3400,4000 -t | xargs kill"
   },
   "dependencies": {
     "@genkit-ai/ai": "^0.5.4",
