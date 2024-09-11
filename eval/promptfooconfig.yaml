@@ -1,0 +1,39 @@
+# Learn more about building a configuration: https://promptfoo.dev/docs/configuration/guide
+description: "My eval"
+
+prompts:
+  - "{{subject}}"
+
+providers:
+  # URL of the API endpoint
+  # see: https://www.promptfoo.dev/docs/providers/http/
+  - id: "http://127.0.0.1:3400/menuSuggestionFlow"
+    config:
+      method: "POST"
+      headers:
+        "Content-Type": "application/json"
+      body:
+        data: "{{prompt}}"
+      responseParser: "json.result"
+
+tests:
+  - description: "No.1 subject: Japanese"
+    vars:
+      subject: Japanese
+    assert:
+      # `icontains` assertion checks if the output contains the expected value (ignore case).
+      # see: https://www.promptfoo.dev/docs/configuration/expected-outputs/deterministic/#contains
+      - type: icontains
+        value: sushi
+      # `similar` assertion checks if an embedding of the output issemantically similar to the expected value.
+      # see: https://www.promptfoo.dev/docs/configuration/expected-outputs/similar/
+      - type: similar
+        value: file://expected/1.txt
+        threshold: 0.9
+      # `llm-rubric` assertion will use a language model to grade the output based on the specified rubric (default: gpt-4o).
+      # see: https://www.promptfoo.dev/docs/configuration/expected-outputs/model-graded/llm-rubric/
+      - type: llm-rubric
+        value: |
+          Please evaluate based on the following criteria:
+          - That it is polite
+          - That there is an explanation of the ingredients

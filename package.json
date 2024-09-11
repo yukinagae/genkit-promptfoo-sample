@@ -13,7 +13,9 @@
     "check": "biome check ./src",
     "fix": "biome check --write ./src",
     "genkit": "genkit start -o",
-    "kill": "lsof -i:3100,3400,4000 -t | xargs kill"
+    "kill": "lsof -i:3100,3400,4000 -t | xargs kill",
+    "eval:run": "cd eval && promptfoo eval --no-cache",
+    "eval:view": "cd eval && promptfoo view --yes"
   },
   "dependencies": {
     "@genkit-ai/ai": "^0.5.4",
