@@ -42,7 +42,7 @@ $ npm install
 
 1. **Set the `GOOGLE_GENAI_API_KEY` Environment Variable**
 
-Before running the project, you need to provide your Gemini API key.
+Before running the project, you need to provide your Google GenAI API key.
 
 ```bash
 $ export GOOGLE_GENAI_API_KEY=your_api_key
@@ -50,13 +50,13 @@ $ export GOOGLE_GENAI_API_KEY=your_api_key
 
 2. **Run the Genkit server locally**
 
-This command starts the project and automatically opens your default web browser to http://localhost:4000.
+This command starts the project and automatically opens your default web browser to `http://localhost:4000`.
 
 ```bash
 $ npm run genkit
 ```
 
-To test the functionaly, run the following command:
+To test the functionality, run the following command:
 
 ```bash
 $ curl -X POST -H "Content-Type: application/json" -d '{"data":"French"}' http://127.0.0.1:3400/menuSuggestionFlow
